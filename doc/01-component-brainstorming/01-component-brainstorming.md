@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Canyon Bishop
+- **Dot Numbers**: bishop.712
+- **Due Date**: 09/19 @ 4:10p
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,7 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
 
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
@@ -67,7 +62,6 @@ project. Specifically, students should be able to:
 
 ## Assignment Rubric: 10 Points
 
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,23 +100,23 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+Well, my biggest motivator for joining the OSU CSE program was to become a security engineer
+so all things cybersecurity interest me greatly. Specific points within this
+sphere that intrigue me are cryptography and malware, particularly worms and
+ransomeware. I have dissected several malware samples in the past and have
+a particularly affinity towards ones that are architected with care.
+
+On a personal note, I quite enjoy magic tricks; particularly card tricks.
+
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -131,8 +125,6 @@ etc. Make of this whatever seems interesting to you, and keep in mind that
 you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -200,68 +192,81 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: CryptoRoulette
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to store data in a collection while introducing a probabilistic encryption mechanism. Our intent with this design was to demonstrate how data structures can dynamically change state based on internal or external triggers. At random (based on a seed or probability pattern), the entire data structure may encrypt its contents. All retrieval operations must then decrypt before returning elements.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void insert(Element e): inserts element e into the structure
+    - Element retrieve(): retrieves a random element (or in FIFO/LIFO order depending on implementation)
+    - boolean isEncrypted(): reports whether the structure is currently encrypted
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void triggerEncrypt(): forces an encryption event regardless of probability
+    - void decryptAll(): decrypts all elements, restoring plain state
+    - void setPattern(Pattern p): sets the probability pattern or seed used for encryption events
+    - int size(): reports number of elements currently stored
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. Inserting elements, encrypting, and decrypting mutate the internal state.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I dont know.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. It could include constants for different encryption modes (e.g., XOR, ROT13, AES-lite).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, triggerEncrypt() could iterate through stored elements (retrieved with kernel operations), apply encryption, and then re-insert them.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: DataMonte
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to store data exclusively in "trip-pairs", groups of three elements. Our intent with this design was to create a playful structure that enforces grouping and introduces a shuffling mechanism. Every time the structure is accessed, it reshuffles all trip-pairs so the user must search for elements again.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - Void addTrip(Element a, Element b, Element c): adds a trip-pair containing exactly three elements
+    - Triple retrieveTrip(): retrieves one full trip-pair (three elements) at a time
+    - boolean isEmpty(): reports whether the structure has no trip-pairs
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void shuffle(): shuffles all trip-pairs in-place
+    - boolean contains(Element e): reports whether element e exists in any trip-pair
+    - int tripCount(): reports the number of trip-pairs currently stored
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. Adding trips, retrieving them, and shuffling all modify the structure
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes it may rely on Pair classes.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No. Shuffling and trip grouping can be implemented without predefined constants.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, shuffle() could be implemented by temporarily retrieving all trip-pairs (using retrieveTrip), randomizing their order, and re-adding them with addTrip.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: PhantomQueue
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to store elements in a queue-like structure where each element has a limited lifespan, measured in number of operations. Our intent with this design was to demonstrate a data structure that "self-purges" elements over time, simulating ephemeral or cache-like behavior.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void enqueue(Element e, int ttl): adds element e with a time-to-live counter
+    - Element dequeue(): removes and returns the oldest unexpired element
+    - void tick(): decrements TTL for all elements and removes those that reach 0
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - Element peek(): returns (but does not remove) the next unexpired element
+    - int size(): reports how many elements are currently stored (not expired)
+    - boolean isEmpty(): reports whether any unexpired elements remain
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. Enqueueing, ticking, and dequeuing all change the internal state.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. It may rely on queue and map classes for data adn TTL.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Possibly. A constant for the default TTL could be helpful for enqueue operations where no TTL is specified.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, size() could be implemented by repeatedly calling dequeue() and re-enqueueing each element until the queue is back to its original state.
 
 ## Post-Assignment
 
@@ -270,7 +275,6 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -292,12 +296,12 @@ the following form: YYYY.0M.0D.
 
 ### Added
 
-- Designed a <!-- insert name of component 1 here --> component
-- Designed a <!-- insert name of component 2 here --> component
-- Designed a <!-- insert name of component 3 here --> component
+- Designed a CryptoRoulette component
+- Designed a DataMonte component
+- Designed a PhantomQueue component
 ```
 
-Here `YYYY.MM.DD` would be the date of your submission, such as 2024.04.21.
+Here `2025.09.21` would be the date of your submission, such as 2024.04.21.
 
 You may notice that things are nicely linked in the root CHANGELOG. If you'd
 like to accomplish that, you will need to make GitHub releases after each pull
@@ -309,7 +313,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
 
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
@@ -319,11 +322,7 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
-
 ### Peer Review
-
-<!-- TODO: review the peer review guidelines then delete this comment -->
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
