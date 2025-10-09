@@ -6,14 +6,6 @@ import components.queue.Queue1L;
 /**
  * Proof-of-concept implementation of a "PhantomQueue" component.
  *
- * <p>
- * This queue assigns each element a time-to-live (TTL). Each operation
- * decrements TTL values, and elements expire when their TTL reaches zero.
- *
- * <p>
- * This file demonstrates a possible representation, a few key operations, and
- * example behavior — not a full component hierarchy.
- *
  * @param <T>
  *            the type of elements stored
  *
@@ -127,7 +119,6 @@ public final class PhantomQueue<T> {
                 result = current.element;
             }
         }
-
         this.internalQueue.transferFrom(temp);
         return result;
     }
@@ -149,7 +140,6 @@ public final class PhantomQueue<T> {
                 result.append(", ");
             }
         }
-
         this.internalQueue.transferFrom(temp);
         result.append(">");
         return result.toString();
@@ -171,7 +161,6 @@ public final class PhantomQueue<T> {
                 count++;
             }
         }
-
         this.internalQueue.transferFrom(temp);
         return count;
     }
